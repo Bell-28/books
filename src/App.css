@@ -1,38 +1,215 @@
-.App {
+body {
+  color: aliceblue;
+  background-color: #2C4E80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 90px;
+}
+
+.edit {
+  border: transparent;
+  box-shadow: none;
+  color: #636464;
+  font-size: 14px;
+  margin-top: 1px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.edit:hover {
+  border: transparent;
+  box-shadow: none;
+  color: #ffffff;
+  font-size: 14px;
+  text-shadow: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form-container {
+  max-width: 700px;
+  background-color: #001925;
+  padding: 30px;
+  border-left: 10px solid #ff7a01;
+  border-right: 10px solid #ff7a01;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.heading {
+  display: block;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.form-container .form .input,
+.form-container .form .textarea {
+  color: #ff7a01;
+  width: 100%;
+  background-color: #002733;
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  border-left: 1px solid transparent;
+}
+
+.form-container .form .input:focus,
+.form-container .form .textarea:focus {
+  border-left: 5px solid #ff7a01;
+}
+
+button {
+  padding: 10px 50px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  color: #ff7a01;
+  background-color: transparent;
+  position: relative;
+  border: 1px solid rgb(0, 255, 213);
+  box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  color: transparent;
+  text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #E94BE8;
+  background-color: transparent;
+}
+
+.book-list {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.book-card {
+  padding: 20px;
+  background: #292828da;
+  border: 2px solid #000;
+  border-radius: 15px;
+  margin: 10px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.slick-slide {
+  padding: 0 25px;
+}
+
+.slick-prev,
+.slick-next {
+  color: #ff7a01;
+  font-size: 2rem;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.searchButton {
+
+  margin-left: 10px; /* Add this line */
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #e8e8e8;
+  background-color: #212121;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  text-transform: uppercase;
+  border: 2px solid #212121;
+  padding: 0;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.searchButton .span {
+  position: relative;
+  z-index: 2;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.searchButton::before {
+  content: "";
+  position: absolute;
+  background-color: #e8e8e8;
+  width: 150%;
+  height: 150%;
+  left: 0%;
+  bottom: 0%;
+  transform: translate(-100%, 100%) rotate(45deg);
+  border-radius: 15px;
+}
+
+.searchButton:hover::before {
+  animation: shakeBack 0.6s forwards 0.6s;
+}
+
+.searchButton:hover .span {
+  scale: 1.2;
+}
+
+.searchButton:hover {
+  box-shadow: none;
+}
+
+.searchButton:active {
+  scale: 0.95;
+}
+
+@keyframes shakeBack {
+  0% {
+    transform: translate(-100%, 100%) rotate(45deg);
   }
-  to {
-    transform: rotate(360deg);
+
+  50% {
+    transform: translate(15%, -15%) rotate(45deg);
   }
+
+  100% {
+    transform: translate(-10%, 10%) rotate(45deg);
+  }
+}
+
+
+.search {
+  flex-grow: 1;
+  margin-right: 10px;
+  max-width: 250px;
+  height: 30px;
+  border: 2px solid transparent;
+  outline: none;
+  border-bottom: 2px solid #6284f5;
+  caret-color: #3f3f3f;
+  background-color: #212121;
+  padding: 5px;
+  transition: .5s linear;
+  font-family: monospace;
+  letter-spacing: 1px;
+  color: #e8e8e8;
+}
+
+.search:focus {
+  border: 2px solid #39f39c;
+  caret-color: #39f39c;
+  color: #d7e4de;
+  box-shadow: 4px 4px 10px #070707;
+}
+
+.search:focus::placeholder {
+  color: #ffffff;
 }
